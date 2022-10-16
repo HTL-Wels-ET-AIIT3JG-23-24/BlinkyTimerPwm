@@ -27,7 +27,6 @@
 
 
 // Function Declarations ------------------------------------------------------
-static void LcdInit(void);
 static void GpioInit(void);
 static void Timer3Init(void);
 static void Timer3PwmInit(void);
@@ -40,7 +39,6 @@ static void Timer3PwmInit(void);
  * @retval None
  */
 void blinkyInit(void) {
-	LcdInit();
 	GpioInit();
 	// TODO: Add init functions
 
@@ -60,34 +58,6 @@ void blinkyTask(void){
 	 * function calls and toggle LED accordingly */
 
 
-}
-
-/**
- * Initialize LCD and print default text
- * @param None
- * @retval None
- */
-static void LcdInit(void) {
-	/* Initialize LCD and touch screen */
-	LCD_Init();
-	TS_Init(LCD_GetXSize(), LCD_GetYSize());
-	/* touch screen calibration */
-	//	TS_Calibration();
-
-	/* Clear the LCD and display basic starter text */
-	LCD_Clear(LCD_COLOR_BLACK);
-	LCD_SetTextColor(LCD_COLOR_YELLOW);
-	LCD_SetBackColor(LCD_COLOR_BLACK);
-	LCD_SetFont(&Font20);
-	// There are 2 ways to print text to screen: using printf or LCD_* functions
-	LCD_DisplayStringAtLine(0, "    HTL Wels");
-
-	LCD_SetFont(&Font8);
-	LCD_SetColors(LCD_COLOR_MAGENTA, LCD_COLOR_BLACK); // TextColor, BackColor
-	LCD_DisplayStringAtLineMode(39, "copyright xyz", CENTER_MODE);
-
-	LCD_SetFont(&Font20);
-	LCD_SetColors(LCD_COLOR_WHITE, LCD_COLOR_BLACK);
 }
 
 /**
